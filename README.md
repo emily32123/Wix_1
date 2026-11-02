@@ -1,6 +1,6 @@
 # Wix Domains — QA Assignment
 
-**Total time spent:** To be updated after completing the assignment.
+**Total time spent:** Approximately 1 hour 20 minutes, from the first commit to final submission.
 
 ## Project Overview
 
@@ -11,8 +11,6 @@ The project explores the domain discovery experience across Wix's public interfa
 The main user question is: **Can I get this name?**
 
 ## Scope
-
-The assessment covers:
 
 - Wix Domains storefront
 - Wix Business Name Generator
@@ -46,7 +44,7 @@ Create a virtual environment:
 python -m venv .venv
 ```
 
-Activate it on Windows PowerShell:
+Activate on Windows PowerShell:
 
 ```powershell
 .venv\Scripts\Activate.ps1
@@ -58,7 +56,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Install the Playwright Chromium browser:
+Install Playwright Chromium:
 
 ```bash
 python -m playwright install chromium
@@ -66,9 +64,7 @@ python -m playwright install chromium
 
 ### Environment Configuration
 
-Create a local `.env` file in the project root.
-
-Add the following variables:
+Create `.env` in the project root:
 
 ```env
 WIX_API_KEY=your_api_key_here
@@ -77,46 +73,46 @@ WIX_ACCOUNT_ID=your_account_id_here
 
 Use your own Wix credentials. Do not commit `.env` or expose API keys.
 
-The `.env.example` file contains placeholders only.
+`.env.example` contains placeholders only.
 
 ## Running Tests
 
-Run all automated tests with one command:
+Run all tests with one command:
 
 ```bash
 python -m pytest -v
 ```
 
-### Automated Test Coverage
+### Automated Coverage
 
-The current test suite includes:
+1. **API test:** Checks domain availability through the Wix API, validates the HTTP status, response structure, domain, and availability field.
+2. **UI smoke test:** Uses Playwright to open Wix Domains and verify that the page loads successfully and contains domain-related content.
 
-1. **API test:** Sends a request to the Wix Domain Search API and validates the HTTP status, response structure, domain name, and availability data type.
-2. **UI smoke test:** Opens the Wix Domains storefront using Playwright and verifies that the page loads successfully and contains domain-related content.
+Latest observed run: **2 passed**.
 
-The tests are designed to avoid purchasing or registering domains.
+No purchases or registrations are performed.
 
 ## Quality Strategy
 
 1. Prioritize critical domain discovery user journeys.
 2. Validate API contracts, response structures, and error handling.
-3. Compare UI behavior with API responses when the information is equivalent.
+3. Compare UI behavior with API responses when equivalent.
 4. Use stable assertions and avoid hardcoded dynamic suggestions or availability results.
 5. Protect credentials, avoid destructive actions, and report only evidence-backed defects.
 
 ## One-Week Improvement Plan
 
-1. **Day 1:** Expand API validation, including invalid inputs and error responses.
-2. **Day 2:** Add more UI tests for domain search and input validation.
-3. **Day 3:** Add coverage for supported and unsupported TLDs.
-4. **Day 4:** Improve localization, pricing, and premium-domain test coverage.
-5. **Day 5:** Add accessibility checks and improve test reporting.
-6. **Day 6:** Configure CI execution and review test stability.
-7. **Day 7:** Review findings, remove flaky tests, and improve documentation.
+- **Day 1:** Expand API tests for invalid inputs and error responses.
+- **Day 2:** Add UI validation and search interaction tests.
+- **Day 3:** Test supported and unsupported TLDs.
+- **Day 4:** Investigate localization, pricing, and premium domain behavior.
+- **Day 5:** Add accessibility checks and improve test reporting.
+- **Day 6:** Add CI integration and improve test stability.
+- **Day 7:** Review findings, coverage, and documentation.
 
 ## Limitations
 
-- Domain availability and suggestions may change over time.
-- Pricing and results may depend on visitor location.
-- The current automated suite provides smoke-level coverage, not exhaustive regression coverage.
-- No purchases, registrations, load tests, or brute-force tests are performed.
+- Domain availability and suggestions are dynamic.
+- Prices and displayed options may depend on visitor location.
+- Current automation is smoke-level and not exhaustive.
+- No purchase, registration, load testing, or brute-force activity was performed.
